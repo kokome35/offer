@@ -6,13 +6,13 @@
     <meta name="description" content="Get Amazon Prime and Shudder with this limited offer for UK Android users!">
     <title>Get Amazon Prime along with Shudder!</title>
     <style>
-        /* Default: Hide content */
         body {
             display: none;
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f5;
             color: #333;
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
@@ -64,6 +64,7 @@
             text-align: left;
         }
 
+        /* Position Prime section on the left center */
         .prime-section {
             position: absolute;
             top: 50%;
@@ -71,6 +72,7 @@
             transform: translate(0, -50%);
         }
 
+        /* Position Shudder section on the right center */
         .shudder-section {
             position: absolute;
             top: 50%;
@@ -84,13 +86,13 @@
         }
 
         .sub-heading {
-            font-size: 1.4rem;
-            margin: 2px 0;
+            font-size: 1.4rem; /* Reduced font size for small screens */
+            margin: 2px 0; /* Adjusted margin for tighter spacing */
         }
 
         .price {
-            font-size: 1.2rem;
-            margin: 2px 0;
+            font-size: 1.2rem; /* Reduced font size for small screens */
+            margin: 2px 0; /* Adjusted margin for tighter spacing */
             color: #ddd;
         }
 
@@ -173,7 +175,7 @@
 
             .sub-heading, .price {
                 font-size: 1rem;
-                margin: 2px 0;
+                margin: 2px 0; /* Reduce margin for very small screens */
                 text-align: center;
             }
 
@@ -187,22 +189,17 @@
             }
         }
     </style>
-    <script>
+</head>
+<script>
         document.addEventListener('DOMContentLoaded', function () {
             const isAndroid = /Android/i.test(navigator.userAgent);
             if (isAndroid) {
                 document.body.style.display = 'flex'; // Show content for Android
             } else {
-                document.body.innerHTML = `
-                    <div style="text-align: center; padding: 20px;">
-                        <h1 style="color: #ff0000;">Access Restricted</h1>
-                        <p>This page is only accessible on Android devices.</p>
-                    </div>
-                `;
+                alert('This page is only accessible on Android devices.');
             }
         });
     </script>
-</head>
 <body>
     <header>
         <h1>Get Amazon Prime along with Shudder!</h1>
@@ -212,11 +209,13 @@
     <div class="container">
         <div class="image-container">
             <img src="heroimage.png" alt="Prime and Shudder" class="offer-img">
+            <!-- Prime Section -->
             <div class="overlay-text prime-section">
                 <div class="prime">Prime</div>
                 <div class="sub-heading">30-days free trial</div>
                 <div class="price">£8.99/month after trial</div>
             </div>
+            <!-- Shudder Section -->
             <div class="overlay-text shudder-section">
                 <div class="shudder">Shudder</div>
                 <div class="sub-heading">7-days free trial</div>
