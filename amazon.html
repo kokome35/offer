@@ -6,19 +6,18 @@
     <meta name="description" content="Get Amazon Prime and Shudder with this limited offer for UK Android users!">
     <title>Get Amazon Prime along with Shudder!</title>
     <style>
-        /* Hide content by default */
         body {
-            display: none;
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f5;
             color: #333;
+            display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             min-height: 100vh;
         }
 
-        /* Content styles (visible only on Android devices) */
         header {
             background-color: #0073e6;
             color: white;
@@ -42,6 +41,7 @@
             text-align: center;
             max-width: 90%;
             padding: 20px;
+            position: relative;
         }
 
         .image-container {
@@ -57,27 +57,43 @@
 
         .overlay-text {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #ffffff;
-            font-size: 1.5rem;
+            color: white;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            text-align: center;
         }
 
-        .overlay-text .prime {
+        /* Position Prime section on the left center */
+        .prime-section {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translate(0, -50%);
+            text-align: left;
+        }
+
+        /* Position Shudder section on the right center */
+        .shudder-section {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translate(0, -50%);
+            text-align: left;
+        }
+
+        .prime, .shudder {
             font-size: 2rem;
+            margin-bottom: 5px; /* Reduced margin for closer spacing */
         }
 
-        .overlay-text .sub-heading {
+        .sub-heading {
             font-size: 1.5rem;
+            margin-bottom: 5px; /* Reduced margin for closer spacing */
         }
 
-        .overlay-text .price {
+        .price {
             font-size: 1rem;
-            color: #ffffff;
+            margin-bottom: 0; /* No margin below price for tighter grouping */
+            color: #ddd;
         }
 
         .cta-button {
@@ -89,11 +105,14 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin-top: 20px;
         }
 
         .cta-button:hover {
             background-color: #cc7a00;
+            transform: translateY(-2px);
         }
 
         footer {
@@ -113,18 +132,81 @@
         footer a:hover {
             text-decoration: underline;
         }
-    </style>
-    <script>
-        // Detect Android devices
-        document.addEventListener('DOMContentLoaded', function () {
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            if (isAndroid) {
-                document.body.style.display = 'flex'; // Show content
-            } else {
-                alert('This offer is only available for Android devices.');
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 1.8rem;
             }
-        });
-    </script>
+
+            .prime, .shudder {
+                font-size: 1.8rem;
+            }
+
+            .sub-heading {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .prime, .shudder {
+                font-size: 1.5rem;
+            }
+
+            .sub-heading {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                font-size: 0.8rem;
+                padding: 10px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            header p {
+                font-size: 0.8rem;
+            }
+
+            .prime, .shudder {
+                font-size: 1.2rem;
+            }
+
+            .sub-heading {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                font-size: 0.7rem;
+                padding: 8px 15px;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -135,12 +217,15 @@
     <div class="container">
         <div class="image-container">
             <img src="heroimage.png" alt="Prime and Shudder" class="offer-img">
-            <div class="overlay-text">
+            <!-- Prime Section -->
+            <div class="overlay-text prime-section">
                 <div class="prime">Prime</div>
                 <div class="sub-heading">30-days free trial</div>
                 <div class="price">£8.99/month after trial</div>
-                <br />
-                <div class="prime">Shudder</div>
+            </div>
+            <!-- Shudder Section -->
+            <div class="overlay-text shudder-section">
+                <div class="shudder">Shudder</div>
                 <div class="sub-heading">7-days free trial</div>
                 <div class="price">£4.99/month after trial</div>
             </div>
@@ -153,4 +238,4 @@
         <p>&copy; 2024. All rights reserved. | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
     </footer>
 </body>
-</html>
+</html> 
